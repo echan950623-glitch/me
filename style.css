@@ -1,0 +1,350 @@
+/* --- 變數與配色方案 --- */
+:root {
+    --bg-color: #121212;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --accent-color: #39C5BB;
+    --section-spacing: 120px;
+    --nav-height: 80px;  /* 電腦版高度 */
+}
+
+/* --- 全域基礎設定 --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html.lenis { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto; }
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+ul { list-style: none; }
+
+/* --- 導覽列 (Navbar) --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    height: var(--nav-height);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    background: rgba(18, 18, 18, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: height 0.3s ease; /* 增加高度變化的過渡動畫 */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    z-index: 1001;
+    height: 100%;
+}
+
+.logo img {
+    height: 120px;
+    width: auto;
+    object-fit: contain;
+    transition: height 0.3s ease;
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.nav-links li a {
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+.nav-links li a:not(.btn-cta)::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.nav-links li a:not(.btn-cta):hover::after { width: 100%; }
+.nav-links li a:hover { color: var(--accent-color); }
+
+.nav-links li a.btn-cta {
+    border: 2px solid var(--accent-color);
+    border-radius: 50px;
+    padding: 8px 24px;
+    color: var(--accent-color);
+}
+
+.nav-links li a.btn-cta:hover {
+    background-color: var(--accent-color);
+    color: #000;
+    box-shadow: 0 0 15px rgba(57, 197, 187, 0.4);
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 1001;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+/* --- 主視覺 --- */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 15%;
+    padding-top: var(--nav-height);
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.hero h1 .highlight {
+    color: var(--accent-color);
+    display: inline-block;
+    position: relative;
+}
+
+.hero h1 .highlight::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 8px;
+    width: 100%;
+    height: 12px;
+    background-color: var(--accent-color);
+    opacity: 0.2;
+    z-index: -1;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    margin-bottom: 50px;
+    min-height: 1.6em;
+}
+
+.typed-cursor { color: var(--accent-color); }
+
+.btn {
+    display: inline-block;
+    padding: 14px 36px;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    font-weight: 600;
+    border-radius: 50px;
+    letter-spacing: 1px;
+}
+
+.btn:hover {
+    background-color: var(--accent-color);
+    color: #000;
+    box-shadow: 0 0 20px rgba(57, 197, 187, 0.4);
+}
+
+/* --- 內容區塊 --- */
+.section {
+    padding: var(--section-spacing) 15%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    /* 備用方案：使用 CSS scroll-margin 防止遮擋 */
+    scroll-margin-top: 100px;
+}
+
+.section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.section h2::before {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 4px;
+    background-color: var(--accent-color);
+    margin-right: 15px;
+}
+
+.section-desc {
+    color: var(--text-secondary); 
+    margin-bottom: 40px;
+    max-width: 600px;
+}
+
+.placeholder-content {
+    background: rgba(255,255,255,0.03);
+    border: 1px dashed rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 40px;
+    color: var(--text-secondary);
+    min-height: 300px;
+    transition: background 0.3s;
+}
+
+.placeholder-content:hover { background: rgba(255,255,255,0.05); }
+
+.text-content p { margin-bottom: 1em; }
+.service-list li { margin-bottom: 20px; }
+.service-list strong { color: var(--text-primary); font-size: 1.1rem; }
+
+.big-box { min-height: 500px; display: flex; align-items: center; justify-content: center; }
+
+/* --- 底部聯絡按鈕 --- */
+.contact-section {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    text-align: center;
+}
+
+.mail-btn {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 35%;     
+    min-width: 280px;
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--accent-color), #39c5bb);
+    color: #000000;
+    font-size: 1.4rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: none;
+    overflow: hidden;
+    box-shadow: 0 10px 40px -10px rgba(57, 197, 187, 0.6);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.mail-btn:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 60px -15px rgba(57, 197, 187, 1);
+    color: #000;
+}
+
+.mail-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    transition: all 0.7s ease;
+    z-index: 1;
+}
+
+.mail-btn:hover::before { left: 100%; }
+
+footer {
+    padding: 50px 15%;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+/* --- RWD 響應式設定 --- */
+@media screen and (max-width: 1024px) {
+    .hero, .section { padding-left: 8%; padding-right: 8%; }
+}
+
+@media screen and (max-width: 768px) {
+    :root { 
+        --section-spacing: 80px;
+    }
+
+    /* 1. 縮小手機版導覽列高度 */
+    .navbar { 
+        height: 60px; /* 從 80px 改為 60px */
+        padding: 0 20px; 
+    }
+
+    /* 2. Logo 圖片縮小 */
+    .logo img { 
+        height: 50px; /* 從 50px 改為 35px */
+    }
+
+    .hamburger { display: flex; }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 100%;
+        background-color: rgba(18, 18, 18, 0.98);
+        flex-direction: column;
+        justify-content: center;
+        gap: 40px;
+        transition: right 0.4s ease;
+        padding-top: 60px;
+    }
+
+    .nav-links.active { right: 0; }
+    .nav-links li a { font-size: 1.5rem; }
+    .nav-links li a.btn-cta { font-size: 1.3rem; padding: 12px 30px; }
+
+    .hamburger.toggle span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+    .hamburger.toggle span:nth-child(2) { opacity: 0; }
+    .hamburger.toggle span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+
+    .hero { padding-left: 20px; padding-right: 20px; align-items: flex-start; }
+    .hero h1 { font-size: 2.8rem; }
+    .hero-subtitle { font-size: 1.1rem; }
+    
+    .section { padding: 60px 20px; }
+    .section h2 { font-size: 2rem; }
+
+    .mail-btn {
+        max-width: 80%;
+        font-size: 1.2rem;
+        padding: 1.2rem;
+    }
+}
