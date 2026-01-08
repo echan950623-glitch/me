@@ -1,11 +1,11 @@
 /* --- 變數與配色方案 --- */
 :root {
-    --bg-color: #121212;      /* 深灰黑背景 */
-    --text-primary: #ffffff;  /* 主要白字 */
-    --text-secondary: #a0a0a0;/* 次要灰字 */
-    --accent-color: #39C5BB;  /* 初音藍 (#39C5BB) */
-    --section-spacing: 120px; /* 區塊間距 */
-    --nav-height: 80px;       /* 導覽列高度 */
+    --bg-color: #121212;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --accent-color: #39C5BB;
+    --section-spacing: 120px;
+    --nav-height: 80px;  /* 電腦版高度 */
 }
 
 /* --- 全域基礎設定 --- */
@@ -48,20 +48,21 @@ ul { list-style: none; }
     background: rgba(18, 18, 18, 0.85);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: height 0.3s ease; /* 增加高度變化的過渡動畫 */
 }
 
-/* Logo 圖片設定 */
 .logo {
     display: flex;
     align-items: center;
     z-index: 1001;
-    height: 100%; /* 讓點擊區域充滿高度 */
+    height: 100%;
 }
 
 .logo img {
-    height: 150px; /* Logo 高度，留一些上下邊距 */
-    width: auto;  /* 寬度自動維持比例 */
+    height: 120px;
+    width: auto;
     object-fit: contain;
+    transition: height 0.3s ease;
 }
 
 .nav-links {
@@ -78,7 +79,6 @@ ul { list-style: none; }
     position: relative;
 }
 
-/* 導覽列連結 Hover 線條 (排除聯絡按鈕) */
 .nav-links li a:not(.btn-cta)::after {
     content: '';
     position: absolute;
@@ -93,7 +93,6 @@ ul { list-style: none; }
 .nav-links li a:not(.btn-cta):hover::after { width: 100%; }
 .nav-links li a:hover { color: var(--accent-color); }
 
-/* 導覽列「聯絡我」圓框按鈕 */
 .nav-links li a.btn-cta {
     border: 2px solid var(--accent-color);
     border-radius: 50px;
@@ -107,7 +106,6 @@ ul { list-style: none; }
     box-shadow: 0 0 15px rgba(57, 197, 187, 0.4);
 }
 
-/* 手機版漢堡按鈕 */
 .hamburger {
     display: none;
     cursor: pointer;
@@ -124,7 +122,7 @@ ul { list-style: none; }
     transition: all 0.3s ease;
 }
 
-/* --- 主視覺 (Hero Section) --- */
+/* --- 主視覺 --- */
 .hero {
     height: 100vh;
     display: flex;
@@ -147,7 +145,6 @@ ul { list-style: none; }
     position: relative;
 }
 
-/* 標題下方裝飾底線 */
 .hero h1 .highlight::after {
     content: '';
     position: absolute;
@@ -169,7 +166,6 @@ ul { list-style: none; }
 
 .typed-cursor { color: var(--accent-color); }
 
-/* --- 通用按鈕 (Hero 區使用) --- */
 .btn {
     display: inline-block;
     padding: 14px 36px;
@@ -190,6 +186,8 @@ ul { list-style: none; }
 .section {
     padding: var(--section-spacing) 15%;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    /* 備用方案：使用 CSS scroll-margin 防止遮擋 */
+    scroll-margin-top: 100px;
 }
 
 .section h2 {
@@ -232,7 +230,7 @@ ul { list-style: none; }
 
 .big-box { min-height: 500px; display: flex; align-items: center; justify-content: center; }
 
-/* --- 底部聯絡區塊與特殊按鈕 --- */
+/* --- 底部聯絡按鈕 --- */
 .contact-section {
     min-height: 60vh;
     display: flex;
@@ -242,7 +240,6 @@ ul { list-style: none; }
     text-align: center;
 }
 
-/* 特殊設計的大型按鈕 */
 .mail-btn {
     position: relative;
     display: inline-flex;
@@ -271,7 +268,6 @@ ul { list-style: none; }
     color: #000;
 }
 
-/* 按鈕流光特效 */
 .mail-btn::before {
     content: '';
     position: absolute;
@@ -286,7 +282,6 @@ ul { list-style: none; }
 
 .mail-btn:hover::before { left: 100%; }
 
-/* --- Footer --- */
 footer {
     padding: 50px 15%;
     text-align: center;
@@ -301,15 +296,23 @@ footer {
 }
 
 @media screen and (max-width: 768px) {
-    :root { --section-spacing: 80px; }
+    :root { 
+        --section-spacing: 80px;
+    }
 
-    .navbar { padding: 0 20px; }
+    /* 1. 縮小手機版導覽列高度 */
+    .navbar { 
+        height: 60px; /* 從 80px 改為 60px */
+        padding: 0 20px; 
+    }
+
+    /* 2. Logo 圖片縮小 */
+    .logo img { 
+        height: 50px; /* 從 50px 改為 35px */
+    }
+
     .hamburger { display: flex; }
 
-    /* Logo 在手機上稍微縮小 */
-    .logo img { height: 80px; }
-
-    /* 手機版選單 */
     .nav-links {
         position: fixed;
         top: 0;
@@ -328,7 +331,6 @@ footer {
     .nav-links li a { font-size: 1.5rem; }
     .nav-links li a.btn-cta { font-size: 1.3rem; padding: 12px 30px; }
 
-    /* 漢堡動畫 */
     .hamburger.toggle span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
     .hamburger.toggle span:nth-child(2) { opacity: 0; }
     .hamburger.toggle span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
