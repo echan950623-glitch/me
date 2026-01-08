@@ -34,31 +34,31 @@ document.addEventListener('DOMContentLoaded', () => {
         hamburger.classList.toggle('toggle');
     });
 
-    // 2. 導覽列連結點擊處理 (含修復首頁連結)
+    // 2. 導覽列連結點擊處理 (含 RWD 偏移修正)
     navItems.forEach(link => {
         link.addEventListener('click', (e) => {
             const href = link.getAttribute('href');
 
             // 判斷是否為錨點連結 (#開頭)
             if (href.startsWith('#')) {
-                e.preventDefault(); // 阻止瀏覽器預設跳轉
+                e.preventDefault(); 
                 
                 // 關閉手機選單
                 navLinks.classList.remove('active');
                 hamburger.classList.remove('toggle');
 
-                // 修正：如果 href 只是 "#"，就滾動到 0 (最上面)
                 if (href === '#') {
+                    // 回到最頂端
                     lenis.scrollTo(0);
                 } else {
-                    // 否則滾動到指定的 ID (例如 #about)
-                    lenis.scrollTo(href);
+                    // 滾動到指定區塊，並設定偏移量 (Offset)
+                    // -80 是為了扣掉導覽列的高度，避免標題被擋住
+                    // 如果覺得距離還是不夠，可以改成 -100
+                    lenis.scrollTo(href, { offset: -80 });
                 }
             }
-            // 如果是 mailto 或外部連結，維持預設行為
         });
     });
-    
 
     // 3. Logo 點擊回頂端
     logo.addEventListener('click', (e) => {
