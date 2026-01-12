@@ -24,6 +24,7 @@ body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 a {
@@ -48,7 +49,7 @@ ul { list-style: none; }
     background: rgba(18, 18, 18, 0.85);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    transition: height 0.3s ease;
+    transition: height 0.3s ease, background 0.4s ease, border-color 0.4s ease;
 }
 
 /* Logo 圖片 */
@@ -94,7 +95,8 @@ ul { list-style: none; }
 }
 
 .nav-links li a:not(.btn-cta):not(.btn-pricing):hover::after { width: 100%; }
-.nav-links li a:hover { color: var(--accent-color); }
+.nav-links li a:hover { color: var(--accent-text-light); }
+body.light-mode .nav-links li a:hover { color: var(--accent-text-light); }
 
 /* --- 特殊按鈕 1：服務與報價 (導覽列) --- */
 .nav-links li a.btn-pricing {
@@ -115,6 +117,10 @@ ul { list-style: none; }
     transition: transform 0.3s ease;
 }
 
+body.light-mode .nav-links li a.btn-pricing svg {
+    color: var(--accent-text-light);
+}
+
 .nav-links li a.btn-pricing:hover {
     background: rgba(57, 197, 187, 0.15);
     border-color: var(--accent-color);
@@ -132,6 +138,11 @@ ul { list-style: none; }
     border-radius: 50px;
     padding: 8px 24px;
     color: var(--accent-color);
+}
+
+body.light-mode .nav-links li a.btn-cta {
+    border: 2px solid var(--accent-text-light);
+    color: var(--accent-text-light);
 }
 
 .nav-links li a.btn-cta:hover {
@@ -181,6 +192,10 @@ ul { list-style: none; }
     position: relative;
 }
 
+body.light-mode .hero h1 .highlight {
+    color: var(--accent-text-light);
+}
+
 .hero h1 .highlight::after {
     content: '';
     position: absolute;
@@ -201,6 +216,7 @@ ul { list-style: none; }
 }
 
 .typed-cursor { color: var(--accent-color); }
+body.light-mode .typed-cursor { color: var(--accent-text-light); }
 
 /* --- 呼吸燈按鈕 (Hero 區) --- */
 .btn {
@@ -211,6 +227,11 @@ ul { list-style: none; }
     font-weight: 600;
     border-radius: 50px;
     letter-spacing: 1px;
+}
+
+body.light-mode .btn {
+    border: 1px solid var(--accent-text-light);
+    color: var(--accent-text-light);
 }
 
 .btn:hover {
@@ -259,6 +280,7 @@ ul { list-style: none; }
     margin-bottom: 15px;
     display: flex;
     align-items: center;
+    transition: color 0.4s ease;
 }
 
 .section h2::before {
@@ -274,6 +296,7 @@ ul { list-style: none; }
     color: var(--text-secondary); 
     margin-bottom: 40px;
     max-width: 600px;
+    transition: color 0.4s ease;
 }
 
 .placeholder-content {
@@ -283,7 +306,7 @@ ul { list-style: none; }
     padding: 40px;
     color: var(--text-secondary);
     min-height: 300px;
-    transition: background 0.3s;
+    transition: background 0.4s ease, border-color 0.4s ease, color 0.4s ease;
 }
 
 .placeholder-content:hover { background: rgba(255,255,255,0.05); }
@@ -343,6 +366,7 @@ ul { list-style: none; }
     font-size: 1.5rem;
     margin-bottom: 12px;
     color: var(--text-primary);
+    transition: color 0.4s ease;
 }
 
 .work-content p {
@@ -351,6 +375,7 @@ ul { list-style: none; }
     margin-bottom: 20px;
     line-height: 1.6;
     flex-grow: 1;
+    transition: color 0.4s ease;
 }
 
 .tags {
@@ -376,7 +401,7 @@ ul { list-style: none; }
     text-decoration: underline;
     text-underline-offset: 4px;
 }
-.work-links a:hover { color: var(--accent-color); }
+.work-links a:hover { color: var(--accent-text-light); }
 
 /* --- 底部聯絡按鈕 --- */
 .contact-section {
@@ -398,7 +423,7 @@ ul { list-style: none; }
     min-width: 280px;
     padding: 1.5rem 2rem;
     border-radius: 12px;
-    background: linear-gradient(135deg, var(--accent-color), #395cBB);
+    background: linear-gradient(135deg, var(--accent-color), #39b0bb);
     color: #000000;
     font-size: 1.4rem;
     font-weight: 800;
@@ -436,6 +461,125 @@ footer {
     color: var(--text-secondary);
     font-size: 0.85rem;
     border-top: 1px solid rgba(255,255,255,0.05);
+    transition: color 0.4s ease, border-color 0.4s ease;
+}
+
+/* --- 淺色主題變數 --- */
+body.light-mode {
+    --bg-color: #f5f5f5;
+    --text-primary: #121212;
+    --text-secondary: #555555; /* 稍微加深一點 */
+    --accent-text-light: #00796B; /* 淺色模式下較深的綠色 */
+}
+
+body.light-mode .navbar {
+    background: rgba(245, 245, 245, 0.85);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .section {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .placeholder-content {
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px dashed rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .placeholder-content:hover {
+    background: rgba(0, 0, 0, 0.06);
+}
+
+body.light-mode .work-card {
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .work-card:hover {
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.15);
+}
+
+body.light-mode footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .hamburger span {
+    background-color: var(--text-primary);
+}
+
+/* 淺色主題下的導覽列按鈕hover效果 */
+body.light-mode .nav-links li a.btn-pricing {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .nav-links li a.btn-pricing:hover {
+    background: rgba(57, 197, 187, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 淺色主題下的郵件按鈕 */
+body.light-mode .mail-btn {
+    background: linear-gradient(135deg, var(--accent-color), #39b0bb);
+    box-shadow: 0 10px 40px -10px rgba(57, 197, 187, 0.4);
+}
+
+body.light-mode .mail-btn:hover {
+    box-shadow: 0 20px 60px -15px rgba(57, 197, 187, 0.6);
+}
+
+/* --- 主題切換按鈕 --- */
+.theme-toggle-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(57, 197, 187, 0.3);
+    transition: all 0.3s ease;
+    z-index: 999;
+    color: #000;
+}
+
+.theme-toggle-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(57, 197, 187, 0.5);
+}
+
+.theme-toggle-btn:active {
+    transform: scale(0.95);
+}
+
+.theme-icon {
+    position: absolute;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.sun-icon {
+    opacity: 0;
+    transform: rotate(90deg);
+}
+
+.moon-icon {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+body.light-mode .sun-icon {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+body.light-mode .moon-icon {
+    opacity: 0;
+    transform: rotate(-90deg);
 }
 
 /* --- RWD 響應式設定 --- */
@@ -474,6 +618,10 @@ footer {
         padding-top: 60px;
     }
 
+    body.light-mode .nav-links {
+        background-color: rgba(245, 245, 245, 0.98);
+    }
+
     .nav-links.active { right: 0; }
     .nav-links li a { font-size: 1.5rem; }
     .nav-links li a.btn-cta { font-size: 1.3rem; padding: 12px 30px; }
@@ -510,5 +658,17 @@ footer {
         max-width: 80%;
         font-size: 1.2rem;
         padding: 1.2rem;
+    }
+
+    .theme-toggle-btn {
+        width: 48px;
+        height: 48px;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .theme-toggle-btn svg {
+        width: 18px;
+        height: 18px;
     }
 }

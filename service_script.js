@@ -50,4 +50,43 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // --- 主題切換功能 ---
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const logoImg = document.querySelector('.logo img');
+    const body = document.body;
+
+    // 從localStorage讀取保存的主題設置，如果沒有則默認為深色模式
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    
+    // 應用保存的主題
+    if (savedTheme === 'light') {
+        body.classList.add('light-mode');
+        if (logoImg) {
+            logoImg.src = 'XunC_black_nobg.png';
+        }
+    }
+
+    // 主題切換函數
+    function toggleTheme() {
+        body.classList.toggle('light-mode');
+        const isLightMode = body.classList.contains('light-mode');
+        
+        // 切換logo圖片
+        if (logoImg) {
+            if (isLightMode) {
+                logoImg.src = 'XunC_black_nobg.png'; // 淺色背景用黑色logo
+            } else {
+                logoImg.src = 'XunC_while_nobg.png'; // 深色背景用白色logo
+            }
+        }
+        
+        // 保存主題設置到localStorage
+        localStorage.setItem('theme', isLightMode ? 'light' : 'dark');
+    }
+
+    // 綁定切換按鈕事件
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', toggleTheme);
+    }
 });

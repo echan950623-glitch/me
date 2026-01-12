@@ -1,0 +1,300 @@
+/* link.css - 聯絡資訊頁面樣式 */
+
+/* --- Header 區塊調整 --- */
+.link-header {
+    padding: 60px 15% 40px;
+    text-align: center;
+    transition: color 0.4s ease;
+}
+
+.link-header-content h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.link-header-content .highlight {
+    color: var(--accent-color);
+    display: inline-block;
+    position: relative;
+}
+
+body.light-mode .link-header-content .highlight {
+    color: var(--accent-text-light);
+}
+
+.link-header-content .highlight::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 8px;
+    width: 100%;
+    height: 12px;
+    background-color: var(--accent-color);
+    opacity: 0.2;
+    z-index: -1;
+}
+
+/* --- 聯絡連結卡片容器 --- */
+.contact-links-section {
+    padding-top: 40px;
+    padding-bottom: 80px;
+}
+
+.contact-links-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 0;
+}
+
+.contact-link-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: all 0.3s ease, background 0.4s ease, border-color 0.4s ease, color 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.contact-link-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+}
+
+/* --- 聯絡圖標 --- */
+.contact-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.contact-icon svg {
+    width: 36px;
+    height: 36px;
+}
+
+.gmail-icon {
+    color: #ea4335;
+}
+
+.discord-icon {
+    color: #5865F2;
+}
+
+.facebook-icon {
+    color: #1877F2;
+}
+
+.contact-link-card:hover .contact-icon {
+    transform: scale(1.05);
+    background: rgba(57, 197, 187, 0.1);
+}
+
+.contact-link-card:hover .gmail-icon {
+    background: rgba(234, 67, 53, 0.1);
+}
+
+.contact-link-card:hover .discord-icon {
+    background: rgba(88, 101, 242, 0.1);
+}
+
+.contact-link-card:hover .facebook-icon {
+    background: rgba(24, 119, 242, 0.1);
+}
+
+/* --- 卡片內容 --- */
+.contact-link-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    transition: color 0.4s ease;
+}
+
+.contact-link-card p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 25px;
+    line-height: 1.6;
+    flex-grow: 1;
+    transition: color 0.4s ease;
+}
+
+/* --- 聯絡按鈕 --- */
+.contact-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    background: transparent;
+    border: 2px solid var(--accent-color);
+    border-radius: 50px;
+    color: var(--accent-color);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+body.light-mode .contact-link-btn {
+    border: 2px solid var(--accent-text-light);
+    color: var(--accent-text-light);
+}
+
+.contact-link-btn svg {
+    transition: transform 0.3s ease;
+}
+
+.contact-link-btn:hover {
+    background: var(--accent-color);
+    color: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(57, 197, 187, 0.3);
+}
+
+.contact-link-btn:hover svg {
+    transform: translateX(5px);
+}
+
+/* --- 返回首頁區塊 --- */
+.back-home-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 60px;
+    padding-bottom: 80px;
+    text-align: center;
+}
+
+.back-home-content {
+    max-width: 600px;
+}
+
+.back-home-content h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-home-content h2::before {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 4px;
+    background-color: var(--accent-color);
+    margin-right: 15px;
+}
+
+.back-home-content .section-desc {
+    margin-bottom: 30px;
+}
+
+/* --- 淺色主題樣式 --- */
+body.light-mode .contact-link-card {
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .contact-link-card:hover {
+    background: rgba(0, 0, 0, 0.05);
+    box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.15);
+}
+
+body.light-mode .contact-icon {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .contact-link-card:hover .contact-icon {
+    background: rgba(57, 197, 187, 0.1);
+}
+
+body.light-mode .contact-link-card:hover .gmail-icon {
+    background: rgba(234, 67, 53, 0.1);
+}
+
+body.light-mode .contact-link-card:hover .discord-icon {
+    background: rgba(88, 101, 242, 0.1);
+}
+
+body.light-mode .contact-link-card:hover .facebook-icon {
+    background: rgba(24, 119, 242, 0.1);
+}
+
+/* --- RWD 響應式設計 --- */
+@media screen and (max-width: 768px) {
+    .link-header {
+        padding: 40px 20px 30px;
+    }
+
+    .link-header-content h1 {
+        font-size: 2rem;
+    }
+
+    .contact-links-section {
+        padding: 30px 20px 60px;
+    }
+
+    .contact-links-container {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .contact-link-card {
+        padding: 35px 25px;
+    }
+
+    .contact-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 20px;
+    }
+
+    .contact-icon svg {
+        width: 32px;
+        height: 32px;
+    }
+
+    .contact-link-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .back-home-section {
+        padding: 40px 20px 60px;
+    }
+
+    .back-home-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .back-home-content h2::before {
+        width: 25px;
+        margin-right: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .contact-link-card {
+        padding: 30px 20px;
+    }
+
+    .contact-link-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
