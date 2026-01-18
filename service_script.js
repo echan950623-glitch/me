@@ -90,3 +90,19 @@ document.addEventListener('DOMContentLoaded', () => {
         themeToggleBtn.addEventListener('click', toggleTheme);
     }
 });
+
+// 禁止右鍵
+document.addEventListener('contextmenu', event => event.preventDefault());
+
+// 禁止 F12 和 Ctrl+Shift+I 等快捷鍵
+document.onkeydown = function(e) {
+    if(event.keyCode == 123) { // F12
+       return false;
+    }
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+       return false;
+    }
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+   return false;
+    }
+}
